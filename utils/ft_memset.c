@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verif_map.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 12:40:15 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/25 08:31:07 by tpotilli         ###   ########.fr       */
+/*   Created: 2022/10/12 13:48:24 by tpotillion        #+#    #+#             */
+/*   Updated: 2023/10/25 12:45:34 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*bool verif_map_outline(char *argv[])
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int i;
-	int	j;
+	size_t	i;
 
-	j = 0;
 	i = 0;
-	while (argv[i])
+	while (i < n)
 	{
-		if (argv[i][j] != 1)
-			return (pr_error("map is wrong"));
-		else
-			while (argv[i][j])
-			{
-				if (argv[i][j] != 0)
-					return (pr_error("map is wrong"));
-				j++;
-			}
-		j = 0;
+		((unsigned char *)s)[i] = c;
 		i++;
 	}
-	return (0);
+	return (s);
 }
-*/

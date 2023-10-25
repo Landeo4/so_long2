@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/23 14:26:12 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:35:30 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_game
 }		t_game;
 
 int		ft_strlen(char *s);
-int		main(int argc, char *argv[]);
+int		main(int argc, char *argv[], char *env[]);
 int		pr_error(char *error);
 
 /*
@@ -53,6 +53,11 @@ int		pr_error(char *error);
 
 bool	parsing(char *argv[]);
 bool	verif_map_outline(char *argv[]);
+int		verif_map(char **argv);
+char	**map_manager(char *argv[], char *evp[]);
+char	*ft_get_path(char **env);
+int		get_lenght(char *tmp, char *argv[]);
+char	*get_final_path_map(char *argv[], char *env[]);
 
 /*
 =====================================
@@ -77,7 +82,7 @@ int			ft_find_newline(char *str);
 
 /*
 =====================================
-			PRINTF
+			PRINTF et LIBFT
 =====================================
 */
 
@@ -97,5 +102,18 @@ int					ft_print_ptr(unsigned long long ptr);
 char				*ft_itoa(int n);
 int					ft_print_hex(unsigned int nbr, const char format);
 int					ft_strlen(char *str);
+int					ft_letter(char const *s, char c, int i);
+char				**ft_free(char **split, int index_word);
+int					ft_word(char const *s, char c);
+char				**ft_copy(char const *s, char c, char **split, int i);
+char				**ft_split(char const *s, char c);
+void				ft_bzero(void *s, size_t n);
+void				*ft_calloc(size_t nmemb, size_t size);
+void				*ft_memset(void *s, int c, size_t n);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				*str_join_free(char *path, char *cmd);
+char				*ft_cpyjoin(char const *s1, char const *s2, char *str);
+char				*ft_strjoin(char *s1, char *s2);
+size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 
 #endif

@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verif_map.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 12:40:15 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/25 08:31:07 by tpotilli         ###   ########.fr       */
+/*   Created: 2022/10/12 13:55:18 by tpotillion        #+#    #+#             */
+/*   Updated: 2023/10/25 12:45:42 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*bool verif_map_outline(char *argv[])
+void	ft_bzero(void *s, size_t n)
 {
-	int i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (argv[i])
-	{
-		if (argv[i][j] != 1)
-			return (pr_error("map is wrong"));
-		else
-			while (argv[i][j])
-			{
-				if (argv[i][j] != 0)
-					return (pr_error("map is wrong"));
-				j++;
-			}
-		j = 0;
-		i++;
-	}
-	return (0);
+	ft_memset (s, '\0', n);
 }
-*/

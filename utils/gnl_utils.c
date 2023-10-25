@@ -6,39 +6,11 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 10:44:03 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/23 12:26:50 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:33:02 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*str;
-	int		i;
-	int		len;
-
-	if (!s1 && !s2)
-		return (NULL);
-	len = (ft_strlen(s1) + ft_strlen(s2));
-	if (len == 0)
-		return (NULL);
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	i = 0;
-	len = -1;
-	while (++len < ft_strlen(s1))
-		str[len] = s1[len];
-	while (len < ft_strlen(s2) + ft_strlen(s1))
-	{
-		str[len] = s2[i];
-		i++;
-		len++;
-	}
-	str[len] = '\0';
-	return (str);
-}
 
 char	*free_join(char *backup, char *buffer)
 {

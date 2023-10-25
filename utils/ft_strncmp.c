@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verif_map.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 12:40:15 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/25 08:31:07 by tpotilli         ###   ########.fr       */
+/*   Created: 2022/11/11 12:13:44 by tpotilli          #+#    #+#             */
+/*   Updated: 2023/10/25 15:28:21 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*bool verif_map_outline(char *argv[])
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int i;
-	int	j;
+	size_t	i;
 
-	j = 0;
 	i = 0;
-	while (argv[i])
-	{
-		if (argv[i][j] != 1)
-			return (pr_error("map is wrong"));
-		else
-			while (argv[i][j])
-			{
-				if (argv[i][j] != 0)
-					return (pr_error("map is wrong"));
-				j++;
-			}
-		j = 0;
+	if ((!(s1) && !(s2)) || n == 0)
+		return (0);
+	while (s1[i] == s2[i] && i < n - 1 && s1[i] && s2[i])
 		i++;
-	}
-	return (0);
+	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 }
-*/
+
+/*int main()
+{
+	printf("%d\n",ft_strncmp("atoms\0\0\0\0", "atoms\0abc", 8));
+	printf("%d\n",strncmp("atoms\0\0\0\0", "atoms\0abc", 8));
+
+}*/
