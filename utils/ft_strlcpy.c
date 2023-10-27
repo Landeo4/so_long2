@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:09:41 by tpotillion        #+#    #+#             */
-/*   Updated: 2023/10/25 16:02:46 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:54:04 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,15 @@
 **	Then the function will return the len of the copy
 */
 
-#include "so_long"
+#include "so_long.h"
 
-char	*ft_strlcpy(char *dest, const char *src, size_t size)
+char	*ft_strlcpy(char *dest, const char *src, int size)
 {
-	size_t	i;
-	size_t	len;
+	int	i;
 
 	i = 0;
 	if (!dest || !src)
 		return (0);
-	len = ft_strlen(src);
 	if (size != 0)
 	{
 		while (src[i] && i < (size - 1))
@@ -43,7 +41,7 @@ char	*ft_strlcpy(char *dest, const char *src, size_t size)
 		}
 		dest[i] = '\0';
 	}
-	return ();
+	return (dest);
 }
 
 /*int main()

@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 15:10:13 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/25 18:00:32 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:45:35 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,51 @@
 char **map_manager(char *argv[], char *env[])
 {
 	char	*tmp;
-	char	*map;
-	char	**final_map;
-	int		lenght;
+	char	**map;
 
 	tmp = ft_get_path(env);
 	if (!tmp)
 		return (NULL);
-	lenght = get_lenght(tmp, argv);
-	map = malloc(sizeof(char) * lenght);
-	final_map = ft_split(map, '\n');
-	return (final_map);
+	tmp = get_final_path_map(argv, tmp);
+	tmp = get_perfect_pass(tmp);
+	map = get_map(tmp);
+	free(tmp);
+	return (map);
 }
 
-int	get_lenght(char *tmp, char *argv[])
+char *get_perfect_pass(char *tmp)
+{
+	char *buff;
+	int		i;
+	int		j;
+
+	i = 4;
+	j = 0;
+	buff = malloc(sizeof(char) * ft_strlen(tmp) - 3);
+	if (!buff)
+		return (NULL);
+	while (tmp[i])
+	{
+		buff[j] = tmp[i];
+		i++;
+		j++;
+	}
+	buff[j] = '\0';
+	free(tmp);
+	return (buff);
+}
+
+char	*get_final_path_map(char *argv[], char *tmp)
 {
 	int		i;
 	int		j;
 	char	*path;
-	int		fd;
-	int		lenght;
 
-	i = 4;
-	lenght = ft_strlen(argv[1]);
-	fd = ft_strlen(tmp) - 4;
-	fd = fd + lenght;
-	ft_printf("fd %d lenght %d\n", fd, lenght);
-	ft_printf("argv %s\ntmp %s\n", argv[1], tmp);
-	path = malloc(sizeof(char)* (fd  + 1));
+	i = 0;
+	j = 0;
+	path = malloc(sizeof(char) * ft_strlen(tmp) + ft_strlen(argv[1]) + 2);
+	if (!path)
+		return (NULL);
 	while (tmp[i])
 	{
 		path[j] = tmp[i];
@@ -58,13 +75,17 @@ int	get_lenght(char *tmp, char *argv[])
 		j++;
 		i++;
 	}
+	free(tmp);
 	path[j] = '\0';
+	return (path);
+}
+
+/*
 	free(tmp);
 	ft_printf("path: %s", path);
 	fd = open(path, O_RDONLY);
 	read(fd, path, O_RDONLY);
-	return (lenght);
-}
+*/
 
 char	*ft_get_path(char **env)
 {
@@ -79,6 +100,8 @@ char	*ft_get_path(char **env)
 		i++;
 	dos = "/maps";
 	path = malloc(sizeof(char) * ft_strlen(env[i]) + 6);
+	if (!path)
+		return (NULL);
 	while (env[i][j])
 	{
 		path[j] = env[i][j];
@@ -91,8 +114,20 @@ char	*ft_get_path(char **env)
 		i++;
 		j++;
 	}
+	path[j] = '\0';
 	return (path);
 }
+
+/*char *copy_char(char *s1, char *s2, int i, int j)
+{
+	while (s2[i])
+	{
+		s1[j] = s2[i];
+		i++;
+		j++;
+	}
+	return (s1);
+}*/
 
 char *str_join_free(char *path, char *cmd)
 {

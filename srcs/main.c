@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/25 17:25:20 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:49:41 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 int	main(int argc, char *argv[], char *env[])
 {
-	map_manager(argv, env);
+	char	**map;
 	(void)argc;
-	/*ft_printf("argv[1] %s\n", argv[1]);
-	if (!buff)
+
+	map = map_manager(argv, env);
+	ft_printf("checkpoint\n");
+	if (verif_map_manager(map) != 1)
+		return (0);
+	free_show_db_tab(map);
+	return (0);
+	/*if (!buff)
 	{
 		while (buff[i])
 		{
@@ -27,6 +33,32 @@ int	main(int argc, char *argv[], char *env[])
 		return (write(1, "ERROR\n", 7), -1);
 	}*/
 	//parsing(argv);
+}
+
+void free_show_db_tab(char **map)
+{
+	int i = 0;
+	int j = 0;
+	ft_printf("la map\n");
+	while (map[i])
+	{
+		while(map[i][j])
+		{
+			ft_printf("%c", map[i][j]);
+			j++;
+		}
+		ft_printf("\n");
+		i++;
+		j = 0;
+	}
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+	return ;
 }
 
 /*

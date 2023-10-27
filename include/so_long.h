@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/25 17:35:30 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:20:44 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int		ft_strlen(char *s);
 int		main(int argc, char *argv[], char *env[]);
 int		pr_error(char *error);
 
+
+void free_show_db_tab(char **map);
+
 /*
 =====================================
 			PARSING
@@ -52,12 +55,24 @@ int		pr_error(char *error);
 */
 
 bool	parsing(char *argv[]);
-bool	verif_map_outline(char *argv[]);
+int		verif_map_outline(char **map);
 int		verif_map(char **argv);
 char	**map_manager(char *argv[], char *evp[]);
 char	*ft_get_path(char **env);
 int		get_lenght(char *tmp, char *argv[]);
-char	*get_final_path_map(char *argv[], char *env[]);
+char	*get_final_path_map(char *argv[], char *tmp);
+char	*get_perfect_pass(char *tmp);
+char	**get_map(char *tmp);
+
+/*
+=====================================
+			MAP VERIF
+=====================================
+*/
+int		verif_map_manager(char **map);
+int		map_out_help(char **map);
+int		verif_map_middle(char **map, int i, int tk_f, int tk_l);
+int		verif_square(char **map);
 
 /*
 =====================================
@@ -114,6 +129,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*str_join_free(char *path, char *cmd);
 char				*ft_cpyjoin(char const *s1, char const *s2, char *str);
 char				*ft_strjoin(char *s1, char *s2);
-size_t				ft_strlcpy(char *dest, const char *src, size_t size);
+char				*ft_strlcpy(char *dest, const char *src, int size);
+char				*copy_char(char *s1, char *s2, int i, int j);
 
 #endif

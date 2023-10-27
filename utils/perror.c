@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:09:13 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/25 12:59:40 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/27 17:50:40 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	pr_error(char *error)
 {
-	ft_printf("Error\n%d", error);
+	ft_printf("Error\n%s", error);
 	return (0);
 }
