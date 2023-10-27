@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:40:15 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/27 17:50:14 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/27 18:26:18 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ int verif_map_outline(char **map)
 	int		tk_f;
 
 	if (map_out_help(map) == -1)
+	{
+		ft_printf("wrong first line or last\n");
 		return (-1);
+	}
 	i = 1;
 	tk_f = 0;
 	tk_l = 0;
@@ -163,22 +166,24 @@ int verif_map_middle(char **map, int i, int tk_f, int tk_l)
 int map_out_help(char **map)
 {
 	int	i;
-	int	first;
 	int	last;
 
-	first = 0;
 	i = 0;
 	last = ft_strlen(map[i]);
-	while (map[first])
+	ft_printf("map %s\n", map[0]);
+	while (map[0])
 	{
-		if (map[first][i] != 1)
+		if (map[0][i] != '1')
+		{
+			ft_printf("first %c\n", map[0][i]);
 			return (-1);
+		}
 		i++;
 	}
 	i = 0;
 	while (map[last])
 	{
-		if (map[last][i] != 1)
+		if (map[last][i] != '1')
 			return (-1);
 		i++;
 	}
