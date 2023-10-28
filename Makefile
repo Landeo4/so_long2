@@ -6,7 +6,7 @@
 #    By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:25:01 by tpotilli@st       #+#    #+#              #
-#    Updated: 2023/10/27 12:53:05 by tpotilli         ###   ########.fr        #
+#    Updated: 2023/10/28 18:55:11 by tpotilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS =	srcs/main.c\
 		parsing/verif_map.c\
 		parsing/parsing.c\
 		parsing/get_map.c\
+		parsing/verif_map_playable.c\
 
 OBJS = $(SRCS:.c=.o)
 CC = gcc
