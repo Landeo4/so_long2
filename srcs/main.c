@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/27 18:19:24 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:03:19 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char *argv[], char *env[])
 	(void)argc;
 
 	map = map_manager(argv, env);
-	ft_printf("checkpoint\n");
 	if (verif_map_manager(map) != 1)
 		return (0);
 	free_show_db_tab(map);

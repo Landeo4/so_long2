@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:40:15 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/27 18:26:18 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:46:12 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,10 @@ int verif_map_outline(char **map)
 	tk_f = 0;
 	tk_l = 0;
 	if (verif_map_middle(map, i ,tk_f, tk_l) == -1)
+	{
+		ft_printf("wrong map input\n");
 		return (-1);
+	}
 	return (0);
 }
 
@@ -109,79 +112,53 @@ int verif_map_middle(char **map, int i, int tk_f, int tk_l)
 {
 	int j;
 
-	j = 0;
+	j = 1;
 	while (map[i])
 	{
-		while (map[i][j])
+		tk_l = 0;
+		tk_f = 0;
+		if (map[i][0] == '1')
+			tk_f = 1;
+		while (map[i][j] && map[i][j + 1])
 		{
-			if (map[i][j] == 1)
+			if (map[i][j] != '0' && map[i][j] != 'P' && map[i][j] != 'C'
+				&& map[i][j] != 'E' && map[i][j] != '1')
 				return (-1);
 			j++;
 		}
-		if (map[i][0] == 1)
-			tk_f = 1;
-		if (map[i][j] == 1)
+		if (map[i][j] == '1')
 			tk_l = 1;
-		if (tk_l != 1 && tk_f != 1)
+		if (tk_l != 1 || tk_f != 1)
 			return (-1);
 		i++;
 		j = 0;
-		tk_l = 0;
-		tk_f = 0;
 	}
 	return (0);
 }
-
-/*int verif_map_outline(char **map)
-{
-	int		last;
-	int		first;
-	int		i;
-	int		tk_l;
-	int		tk_f;
-
-	if (map_out_help(map) == -1)
-		return (-1);
-	i = 1;
-	first = 0;
-	last = ft_strlen(map[i]);
-	tk_f = 0;
-	tk_l = 0;
-	while (map[i])
-	{
-		if (map[i][0] == 1)
-			tk_f = 1;
-		if (map[i][last] == 1)
-			tk_l = 1;
-		if (tk_l != 1 && tk_f != 1)
-			return (-1);
-		while (map[i][j])
-		{
-			
-		}
-	}
-	return (0);
-}*/
 
 int map_out_help(char **map)
 {
 	int	i;
 	int	last;
+	int j;
 
+	j = 0;
 	i = 0;
-	last = ft_strlen(map[i]);
-	ft_printf("map %s\n", map[0]);
-	while (map[0])
+	last = 0;
+	while (map[last])
+		last++;
+	last--;
+	while (map[i][j])
 	{
-		if (map[0][i] != '1')
+		if (map[i][j] != '1')
 		{
 			ft_printf("first %c\n", map[0][i]);
 			return (-1);
 		}
-		i++;
+		j++;
 	}
 	i = 0;
-	while (map[last])
+	while (map[last][i])
 	{
 		if (map[last][i] != '1')
 			return (-1);
