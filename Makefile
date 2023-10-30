@@ -6,13 +6,14 @@
 #    By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:25:01 by tpotilli@st       #+#    #+#              #
-#    Updated: 2023/10/28 18:55:11 by tpotilli         ###   ########.fr        #
+#    Updated: 2023/10/30 10:20:53 by tpotilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRCS =	srcs/main.c\
+		srcs/game_manager.c\
 		utils/gnl_utils.c\
 		utils/gnl.c\
 		utils/ft_putchar.c\

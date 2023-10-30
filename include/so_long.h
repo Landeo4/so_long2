@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/28 18:49:34 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:21:24 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,22 @@ typedef struct s_game
 {
 	int	i;
 	int cpt;
+	int x;
+	int y;
 	int upper;
 	int lower;
 	int left;
 	int right;
 	int end;
+	void	*mlx;
+	void	*win;
 }		t_game;
 
 int		ft_strlen(char *s);
 int		main(int argc, char *argv[], char *env[]);
 int		pr_error(char *error);
+int		game_manager(char **map);
+int		close_windows(t_game *vars);
 
 
 void free_show_db_tab(char **map);

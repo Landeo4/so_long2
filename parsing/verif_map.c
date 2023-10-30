@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:40:15 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/28 18:54:47 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:39:49 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ int verif_map_manager(char **map)
 		free(map);
 		return (pr_error("wrong_map_outline\n"));
 	}
-	if (verif_playable(map) == -1)
+	/*if (verif_playable(map) == -1)
 	{
 		free(map);
 		return (pr_error("Map not playable\n"));
-	}
+	}*/
 	return (1);
 }
 

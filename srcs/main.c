@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/28 16:03:19 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:39:52 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 int	main(int argc, char *argv[], char *env[])
 {
 	char	**map;
+	//t_game	vars;
 	(void)argc;
 
 	map = map_manager(argv, env);
 	if (verif_map_manager(map) != 1)
 		return (0);
+	game_manager(map);
+	/*vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+	mlx_hook(vars.win, 2, 1L<<0, close_windows, &vars);
+	mlx_loop(vars.mlx);*/
 	free_show_db_tab(map);
 	return (0);
 	/*if (!buff)
@@ -32,6 +38,12 @@ int	main(int argc, char *argv[], char *env[])
 		return (write(1, "ERROR\n", 7), -1);
 	}*/
 	//parsing(argv);
+}
+
+int	close_windows(t_game *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	return (0);
 }
 
 void free_show_db_tab(char **map)
