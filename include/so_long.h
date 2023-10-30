@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/30 12:21:24 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:04:59 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,17 @@
 
 typedef struct s_game
 {
-	int	i;
-	int cpt;
-	int x;
-	int y;
-	int upper;
-	int lower;
-	int left;
-	int right;
-	int end;
+	int		i;
+	int 	cpt;
+	int 	x;
+	int 	y;
+	int 	p_x;
+	int 	p_y;
+	int 	upper;
+	int 	lower;
+	int 	left;
+	int 	right;
+	int 	end;
 	void	*mlx;
 	void	*win;
 }		t_game;
@@ -48,9 +50,14 @@ typedef struct s_game
 int		ft_strlen(char *s);
 int		main(int argc, char *argv[], char *env[]);
 int		pr_error(char *error);
-int		game_manager(char **map);
+int		game_manager(char **map, t_game *ptr);
 int		close_windows(t_game *vars);
-
+t_game	*player_pos(char **map, t_game *ptr);
+int		nb_other(char **map);
+char	**cpy_map(char **map);
+t_game	*init_struct(t_game *ptr);
+void	show_db_tab(char **map);
+void	free_db_tab(char **map);
 
 void free_show_db_tab(char **map);
 
@@ -138,5 +145,6 @@ char				*ft_cpyjoin(char const *s1, char const *s2, char *str);
 char				*ft_strjoin(char *s1, char *s2);
 char				*ft_strlcpy(char *dest, const char *src, int size);
 char				*copy_char(char *s1, char *s2, int i, int j);
+char				*ft_strdup(char *s);
 
 #endif

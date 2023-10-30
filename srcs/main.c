@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/30 13:39:52 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:05:27 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 int	main(int argc, char *argv[], char *env[])
 {
 	char	**map;
-	//t_game	vars;
+	t_game	*ptr;
 	(void)argc;
 
 	map = map_manager(argv, env);
 	if (verif_map_manager(map) != 1)
 		return (0);
-	game_manager(map);
+	ptr = malloc(sizeof(t_game));
+	ptr = init_struct(ptr);
+	game_manager(map, ptr);
 	/*vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
 	mlx_hook(vars.win, 2, 1L<<0, close_windows, &vars);
 	mlx_loop(vars.mlx);*/
-	free_show_db_tab(map);
+	show_db_tab(map);
+	free_db_tab(map);
 	return (0);
 	/*if (!buff)
 	{
@@ -40,13 +43,29 @@ int	main(int argc, char *argv[], char *env[])
 	//parsing(argv);
 }
 
+t_game *init_struct(t_game *ptr)
+{
+	ptr->i = 0;
+	ptr->cpt = 0;
+	ptr->x = 0;
+	ptr->y = 0;
+	ptr->p_x = 0;
+	ptr->p_y = 0;
+	ptr->upper = 0;
+	ptr->lower = 0;
+	ptr->left = 0;
+	ptr->right = 0;
+	ptr->end = 0;
+	return (ptr);
+}
+
 int	close_windows(t_game *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
 }
 
-void free_show_db_tab(char **map)
+void show_db_tab(char **map)
 {
 	int i = 0;
 	int j = 0;
@@ -62,6 +81,13 @@ void free_show_db_tab(char **map)
 		i++;
 		j = 0;
 	}
+	return ;
+}
+
+void free_db_tab(char **map)
+{
+	int i;
+
 	i = 0;
 	while (map[i])
 	{
@@ -71,7 +97,6 @@ void free_show_db_tab(char **map)
 	free(map);
 	return ;
 }
-
 /*
 char **map_manager(char *argv[])
 {
