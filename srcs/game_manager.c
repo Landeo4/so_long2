@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:18:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/31 13:12:40 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:34:03 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 int game_manager(char **map, t_game *ptr)
 {
-	int			cpt_c;
-	int			len;
+	//int			cpt_c;
+	//int			len;
 	char		**tmp;
 
-	ptr->nb_item = nb_item(map);
-	len = get_len_map(map);
+	//ptr->nb_item = nb_item(map);
+	//len = get_len_map(map);
 	ptr = player_pos(map, ptr);
 	if (ptr->p_x == -1)
 		return (-1);
 	tmp = cpy_map(map);
 	show_db_tab(tmp);
-	while (len > 0)
+	/*while (len > 0)
 	{
 		if (game_backtracking(tmp, cpt_c, ptr) == -1)
 			return (-1);
 		len--;
-	}
+	}*/
 	ft_printf("la carte est bonne\n");
 	free_db_tab(tmp);
 	return (0);
 }
 
-int game_backtracking(char **tmp, int cpt_c, t_game *ptr)
+/*int game_backtracking(char **tmp, int cpt_c, t_game *ptr)
 {
 	int		x;
 	int		y;
@@ -46,7 +46,7 @@ int game_backtracking(char **tmp, int cpt_c, t_game *ptr)
 	
 	return (-1);
 }
-
+*/
 int	get_len_map(char **map)
 {
 	int i;
@@ -133,24 +133,24 @@ char **cpy_map(char **map)
 	int		len;
 	char	**tmp;
 
-	i = 0;
+	i = 1;
 	len = 0;
-	while (map[i])
+	while (map[i] && map[i])
 	{
 		i++;
 		len++;
 	}
-	i = 0;
-	tmp = malloc(sizeof (char *) * (len + 1));
+	i = 1;
+	tmp = malloc(sizeof (char *) * len);
 	if (!tmp)
 		return (NULL);
-	while (map[i])
+	while (map[i] && map[i + 1])
 	{
-		tmp[i] = malloc(sizeof(char) * (ft_strlen(map[i]) + 1));
+		tmp[i] = malloc(sizeof(char) * (ft_strlen(map[i]) - 2));
 		if (!tmp[i])
 			return (NULL);
-		j = 0;
-		while (map[i][j])
+		j = 1;
+		while (map[i][j] && map[i][j + 1])
 		{
 			tmp[i][j] = map[i][j];
 			j++;
