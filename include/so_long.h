@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/30 18:04:59 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:12:21 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_game
 	int 	cpt;
 	int 	x;
 	int 	y;
+	int		nb_item;
 	int 	p_x;
 	int 	p_y;
 	int 	upper;
@@ -53,13 +54,13 @@ int		pr_error(char *error);
 int		game_manager(char **map, t_game *ptr);
 int		close_windows(t_game *vars);
 t_game	*player_pos(char **map, t_game *ptr);
-int		nb_other(char **map);
+int		nb_item(char **map);
 char	**cpy_map(char **map);
 t_game	*init_struct(t_game *ptr);
 void	show_db_tab(char **map);
 void	free_db_tab(char **map);
-
-void free_show_db_tab(char **map);
+int		get_len_map(char **map);
+int		game_backtracking(char **tmp, int cpt_c, t_game *ptr);
 
 /*
 =====================================

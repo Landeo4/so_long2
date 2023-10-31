@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:18:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/30 18:18:13 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:12:40 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,85 @@
 
 int game_manager(char **map, t_game *ptr)
 {
-	// int		tk_e;
-	// int		tk_i;
-	// int		cpt_collect;
+	int			cpt_c;
+	int			len;
 	char		**tmp;
 
-	// tk_e = 1;
-	// tk_i = 0;
-	// cpt_collect = nb_other(map);
+	ptr->nb_item = nb_item(map);
+	len = get_len_map(map);
 	ptr = player_pos(map, ptr);
 	if (ptr->p_x == -1)
 		return (-1);
 	tmp = cpy_map(map);
 	show_db_tab(tmp);
-	/*while ()
+	while (len > 0)
 	{
-		
-	}*/
+		if (game_backtracking(tmp, cpt_c, ptr) == -1)
+			return (-1);
+		len--;
+	}
+	ft_printf("la carte est bonne\n");
 	free_db_tab(tmp);
 	return (0);
+}
+
+int game_backtracking(char **tmp, int cpt_c, t_game *ptr)
+{
+	int		x;
+	int		y;
+
+	x = ptr->p_x;
+	y = ptr->p_y;
+	
+	return (-1);
+}
+
+int	get_len_map(char **map)
+{
+	int i;
+	int j;
+	int len;
+
+	i = 0;
+	j = 0;
+	len = 0;
+	while (map[i])
+	{
+		while (map[i][j])
+		{
+			if (map[i][j] != '1')
+				len++;
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	ft_printf("nb case map %i\n", len);
+	return (len);
+}
+
+int		nb_item(char **map)
+{
+	int i;
+	int j;
+	int item;
+
+	i = 0;
+	j = 0;
+	item = 0;
+	while (map[i])
+	{
+		while (map[i][j])
+		{
+			j++;
+			if (map[i][j] == 'C')
+				item++;
+		}
+		i++;
+		j = 0;
+	}
+	ft_printf("item %d\n", item);
+	return (item);
 }
 
 t_game *player_pos(char **map, t_game *ptr)
@@ -81,7 +141,7 @@ char **cpy_map(char **map)
 		len++;
 	}
 	i = 0;
-	tmp = malloc(sizeof (char *) * len + 1);
+	tmp = malloc(sizeof (char *) * (len + 1));
 	if (!tmp)
 		return (NULL);
 	while (map[i])
@@ -98,6 +158,7 @@ char **cpy_map(char **map)
 		tmp[i][j] = '\0';
 		i++;
 	}
+	tmp[i] = NULL;
 	return (tmp);
 }
 
