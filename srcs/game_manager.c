@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:18:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/31 13:34:03 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:35:23 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,24 +133,24 @@ char **cpy_map(char **map)
 	int		len;
 	char	**tmp;
 
-	i = 1;
+	i = 0;
 	len = 0;
-	while (map[i] && map[i])
+	while (map[i])
 	{
 		i++;
 		len++;
 	}
-	i = 1;
-	tmp = malloc(sizeof (char *) * len);
+	i = 0;
+	tmp = malloc(sizeof (char *) * (len + 1));
 	if (!tmp)
 		return (NULL);
-	while (map[i] && map[i + 1])
+	while (map[i] && map[i])
 	{
-		tmp[i] = malloc(sizeof(char) * (ft_strlen(map[i]) - 2));
+		tmp[i] = malloc(sizeof(char) * (ft_strlen(map[i]) + 1));
 		if (!tmp[i])
 			return (NULL);
-		j = 1;
-		while (map[i][j] && map[i][j + 1])
+		j = 0;
+		while (map[i][j])
 		{
 			tmp[i][j] = map[i][j];
 			j++;
@@ -161,6 +161,49 @@ char **cpy_map(char **map)
 	tmp[i] = NULL;
 	return (tmp);
 }
+
+/*
+char **cpy_map(char **map)
+{
+	int		i;
+	int		x;
+	int		j;
+	int		len;
+	char	**tmp;
+
+	i = 1;
+	x = 0;
+	len = 0;
+	while (map[i + 1])
+	{
+		i++;
+		len++;
+	}
+	i = 1;
+	tmp = malloc(sizeof (char *) * len);
+	if (!tmp)
+		return (NULL);
+	ft_printf("len %d\n", len);
+	while (map[i] && map[i + 1])
+	{
+		tmp[x] = malloc(sizeof(char) * (ft_strlen(map[i]) - 1));
+		if (!tmp[x])
+			return (NULL);
+		j = 1;
+		while (map[i][j] && map[i][j + 1])
+		{
+			tmp[x][j] = map[i][j];
+			j++;
+		}
+		ft_printf("x %d\n", x);
+		tmp[x][j] = '\0';
+		i++;
+		x++;
+	}
+	tmp[x] = NULL;
+	return (tmp);
+}
+*/
 
 /*char **map_creator(char **map)
 {
