@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:00:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/02 16:41:16 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:57:06 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,25 @@ int game_backtracking(char **tmp, t_game *ptr)
 	while (backtracking_map_finish(tmp) == 0)
 	{
 		if (backtracking_map(tmp, y, (x + 1)) == 0)
+		{
 			tmp = map_fill(tmp, y, (x + 1), ptr);
-		if (backtracking_map(tmp, y, (x - 1)) == 0)
-			tmp = map_fill(tmp, y, (x - 1), ptr);
-		if (backtracking_map(tmp, (y + 1), x) == 0)
-			tmp = map_fill(tmp, (y + 1), x, ptr);
-		if (backtracking_map(tmp, (y - 1), x) == 0)
-			tmp = map_fill(tmp, (y - 1), x, ptr);
-		if (tmp[y][x + 1] != '1' && tmp[y][x + 1] != '2')
 			x++;
-		else if (tmp[y][x - 1] != '1' && tmp[y][x - 1] != '2')
+		}
+		if (backtracking_map(tmp, y, (x - 1)) == 0)
+		{
+			tmp = map_fill(tmp, y, (x - 1), ptr);
 			x--;
-		else if (tmp[y + 1][x] != '1' && tmp[y + 1][x] != '2')
+		}
+		if (backtracking_map(tmp, (y + 1), x) == 0)
+		{
+			tmp = map_fill(tmp, (y + 1), x, ptr);
 			y++;
-		else if (tmp[y - 1][x] != '1' && tmp[y - 1][x] != '2')
+		}
+		if (backtracking_map(tmp, (y - 1), x) == 0)
+		{
 			y--;
+			tmp = map_fill(tmp, (y - 1), x, ptr);
+		}
 		if (ptr->nb_item == 0 && ptr->nb_exit == 0)
 			return (0);
 		show_db_tab(tmp);
