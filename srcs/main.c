@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/31 12:39:34 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:20:08 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_game *init_struct(t_game *ptr)
 	ptr->x = 0;
 	ptr->y = 0;
 	ptr->nb_item = 0;
+	ptr->nb_exit = 0;
 	ptr->p_x = 0;
 	ptr->p_y = 0;
 	ptr->upper = 0;

@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/10/31 13:12:21 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:00:02 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_game
 	int 	x;
 	int 	y;
 	int		nb_item;
+	int		nb_exit;
 	int 	p_x;
 	int 	p_y;
 	int 	upper;
@@ -60,8 +61,11 @@ t_game	*init_struct(t_game *ptr);
 void	show_db_tab(char **map);
 void	free_db_tab(char **map);
 int		get_len_map(char **map);
-int		game_backtracking(char **tmp, int cpt_c, t_game *ptr);
-
+int		game_backtracking(char **tmp, t_game *ptr);
+int		backtracking_map(char **tmp, int y, int x);
+char	**map_fill(char **tmp, int y, int x, t_game *ptr);
+int		backtracking_map_finish(char **tmp);
+char	**cpy_map_outline(char **tmp);
 /*
 =====================================
 			PARSING

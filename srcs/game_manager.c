@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:18:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/31 15:35:23 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:00:53 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,24 @@ int game_manager(char **map, t_game *ptr)
 	//int			len;
 	char		**tmp;
 
-	//ptr->nb_item = nb_item(map);
+	ptr->nb_item = nb_item(map);
 	//len = get_len_map(map);
 	ptr = player_pos(map, ptr);
 	if (ptr->p_x == -1)
 		return (-1);
 	tmp = cpy_map(map);
 	show_db_tab(tmp);
-	/*while (len > 0)
+	ft_printf("backtracking\n");
+	if (game_backtracking(tmp, ptr) == -1)
 	{
-		if (game_backtracking(tmp, cpt_c, ptr) == -1)
-			return (-1);
-		len--;
-	}*/
+		ft_printf("la map est pas bonne au backtracking\n");
+		return (-1);
+	}
 	ft_printf("la carte est bonne\n");
 	free_db_tab(tmp);
 	return (0);
 }
 
-/*int game_backtracking(char **tmp, int cpt_c, t_game *ptr)
-{
-	int		x;
-	int		y;
-
-	x = ptr->p_x;
-	y = ptr->p_y;
-	
-	return (-1);
-}
-*/
 int	get_len_map(char **map)
 {
 	int i;
