@@ -6,7 +6,7 @@
 #    By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:25:01 by tpotilli@st       #+#    #+#              #
-#    Updated: 2023/11/02 15:01:18 by tpotilli         ###   ########.fr        #
+#    Updated: 2023/11/03 17:30:40 by tpotilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = so_long
 SRCS =	srcs/main.c\
 		srcs/game_manager.c\
 		srcs/backtracking.c\
+		srcs/game_start.c\
 		utils/gnl_utils.c\
 		utils/gnl.c\
 		utils/ft_putchar.c\
@@ -37,7 +38,6 @@ SRCS =	srcs/main.c\
 		parsing/verif_map.c\
 		parsing/parsing.c\
 		parsing/get_map.c\
-		parsing/verif_map_playable.c\
 
 OBJS = $(SRCS:.c=.o)
 CC = gcc

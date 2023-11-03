@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:40:15 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/10/29 17:39:49 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:34:48 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,14 @@ int verif_map_outline(char **map)
 	i = 1;
 	tk_f = 0;
 	tk_l = 0;
-	if (verif_map_middle(map, i ,tk_f, tk_l) == -1)
-	{
-		ft_printf("wrong map input\n");
-		return (-1);
-	}
+	(void)i;
+	(void)tk_l;
+	(void)tk_f;
+	// if (verif_map_middle(map, i ,tk_f, tk_l) == -1)
+	// {
+	// 	ft_printf("wrong map input\n");
+	// 	return (-1);
+	// }
 	return (0);
 }
 

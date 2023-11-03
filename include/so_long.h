@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/03 16:16:09 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:25:33 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ typedef struct s_game
 	void	*win;
 }		t_game;
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 int		ft_strlen(char *s);
 int		main(int argc, char *argv[], char *env[]);
 int		pr_error(char *error);
@@ -66,6 +74,9 @@ int		backtracking_map(char **tmp, int y, int x);
 char	**map_fill(char **tmp, int y, int x, t_game *ptr);
 int		backtracking_map_finish(char **tmp);
 char	**cpy_map_outline(char **tmp);
+void	game_start(char **map, t_game *ptr);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
 /*
 =====================================
 			PARSING

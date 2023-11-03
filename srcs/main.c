@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/02 14:20:08 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:35:14 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 int	main(int argc, char *argv[], char *env[])
 {
 	char	**map;
-	t_game	*ptr;
+	//t_game	*ptr;
 	(void)argc;
 
 	map = map_manager(argv, env);
 	if (verif_map_manager(map) != 1)
+	{
+		free_db_tab(map);
 		return (0);
-	ptr = malloc(sizeof(t_game));
+	}
+	/*ptr = malloc(sizeof(t_game));
 	ptr = init_struct(ptr);
-	game_manager(map, ptr);
-	/*vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	mlx_hook(vars.win, 2, 1L<<0, close_windows, &vars);
-	mlx_loop(vars.mlx);*/
+	if (game_manager(map, ptr) == -1)
+	{
+		free_db_tab(map);
+		return (-1);
+	}*/
+	//game_start(map, ptr);
 	show_db_tab(map);
 	free_db_tab(map);
 	return (0);
@@ -59,12 +63,6 @@ t_game *init_struct(t_game *ptr)
 	ptr->right = 0;
 	ptr->end = 0;
 	return (ptr);
-}
-
-int	close_windows(t_game *vars)
-{
-	mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
 }
 
 void show_db_tab(char **map)
