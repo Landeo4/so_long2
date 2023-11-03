@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:18:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/02 16:57:36 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:04:06 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int game_manager(char **map, t_game *ptr)
 {
 	//int			cpt_c;
 	//int			len;
+	int		x;
+	int		y;
 	char		**tmp;
 
 	ptr->nb_item = nb_item(map);
@@ -26,7 +28,9 @@ int game_manager(char **map, t_game *ptr)
 	tmp = cpy_map(map);
 	show_db_tab(tmp);
 	ft_printf("backtracking\n");
-	if (game_backtracking(tmp, ptr) == -1)
+	x = ptr->p_x;
+	y = ptr->p_y;
+	if (game_backtracking(tmp, ptr, y, x) == -1)
 	{
 		ft_printf("la map est pas bonne au backtracking\n");
 		return (-1);

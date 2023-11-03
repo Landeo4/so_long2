@@ -6,19 +6,32 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:00:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/02 16:57:06 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:09:19 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int game_backtracking(char **tmp, t_game *ptr)
+/*char **game_backtracking(char **tmp, t_game *ptr, int y, int x)
 {
-	int		x;
-	int		y;
+	if (tmp[y][x] != '1'
+		|| tmp[y][x] != '2')
+	{
+		if (tmp[y][x] == 'C')
+			ptr->nb_item--;
+		else if (tmp[y][x] == 'S')
+			ptr->nb_exit--;
+		tmp[y][x] = '2';
+		game_backtracking(tmp, ptr, y, (x + 1));
+		game_backtracking(tmp, ptr, y, (x - 1));
+		game_backtracking(tmp, ptr, (y + 1), x);
+		game_backtracking(tmp, ptr, (y - 1), x);
+	}
+	return (tmp);
+}*/
 
-	x = ptr->p_x;
-	y = ptr->p_y;
+int game_backtracking(char **tmp, t_game *ptr, int y, int x)
+{
 	while (backtracking_map_finish(tmp) == 0)
 	{
 		if (backtracking_map(tmp, y, (x + 1)) == 0)
@@ -26,22 +39,22 @@ int game_backtracking(char **tmp, t_game *ptr)
 			tmp = map_fill(tmp, y, (x + 1), ptr);
 			x++;
 		}
-		if (backtracking_map(tmp, y, (x - 1)) == 0)
+		else if (backtracking_map(tmp, y, (x - 1)) == 0)
 		{
 			tmp = map_fill(tmp, y, (x - 1), ptr);
 			x--;
 		}
-		if (backtracking_map(tmp, (y + 1), x) == 0)
+		else if (backtracking_map(tmp, (y + 1), x) == 0)
 		{
 			tmp = map_fill(tmp, (y + 1), x, ptr);
 			y++;
 		}
-		if (backtracking_map(tmp, (y - 1), x) == 0)
+		else if (backtracking_map(tmp, (y - 1), x) == 0)
 		{
-			y--;
 			tmp = map_fill(tmp, (y - 1), x, ptr);
+			y--;
 		}
-		if (ptr->nb_item == 0 && ptr->nb_exit == 0)
+		else if (ptr->nb_item == 0 && ptr->nb_exit == 0)
 			return (0);
 		show_db_tab(tmp);
 		ft_printf("y %d x %d\n", y, x);

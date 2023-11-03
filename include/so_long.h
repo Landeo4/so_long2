@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/02 16:57:19 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:57:14 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_game	*init_struct(t_game *ptr);
 void	show_db_tab(char **map);
 void	free_db_tab(char **map);
 int		get_len_map(char **map);
-int		game_backtracking(char **tmp, t_game *ptr);
+int		game_backtracking(char **tmp, t_game *ptr, int y, int x);
 int		backtracking_map(char **tmp, int y, int x);
 char	**map_fill(char **tmp, int y, int x, t_game *ptr);
 int		backtracking_map_finish(char **tmp);
