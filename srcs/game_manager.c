@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:18:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/03 15:04:06 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:16:32 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int game_manager(char **map, t_game *ptr)
 	y = ptr->p_y;
 	if (game_backtracking(tmp, ptr, y, x) == -1)
 	{
-		ft_printf("la map est pas bonne au backtracking\n");
+		ft_printf("probleme de backtracking \n");
 		return (-1);
 	}
 	ft_printf("la carte est bonne\n");
