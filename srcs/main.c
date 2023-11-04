@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/03 17:35:14 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/04 14:42:47 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char *argv[], char *env[])
 {
 	char	**map;
-	//t_game	*ptr;
+	t_game	*ptr;
 	(void)argc;
 
 	map = map_manager(argv, env);
@@ -24,14 +24,14 @@ int	main(int argc, char *argv[], char *env[])
 		free_db_tab(map);
 		return (0);
 	}
-	/*ptr = malloc(sizeof(t_game));
+	ptr = malloc(sizeof(t_game));
 	ptr = init_struct(ptr);
 	if (game_manager(map, ptr) == -1)
 	{
 		free_db_tab(map);
 		return (-1);
-	}*/
-	//game_start(map, ptr);
+	}
+	game_start(map, ptr);
 	show_db_tab(map);
 	free_db_tab(map);
 	return (0);
