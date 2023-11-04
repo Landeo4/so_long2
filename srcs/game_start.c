@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 16:29:03 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/04 16:24:38 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/04 16:34:39 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int create_map(char **map, void *mlx)
 	int		i;
 	int		j;
 	void	*mlx_win;
-	
+
 	i = 0;
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
 	while (map[i])
