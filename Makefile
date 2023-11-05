@@ -6,7 +6,7 @@
 #    By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:25:01 by tpotilli@st       #+#    #+#              #
-#    Updated: 2023/11/03 17:30:40 by tpotilli         ###   ########.fr        #
+#    Updated: 2023/11/05 12:49:43 by tpotilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS =	srcs/main.c\
 		utils/ft_strjoin.c\
 		utils/ft_strlcpy.c\
 		utils/ft_strdup.c\
+		utils/ft_len_db_tab.c\
 		parsing/verif_map.c\
 		parsing/parsing.c\
 		parsing/get_map.c\

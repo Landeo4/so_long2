@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 16:29:03 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/04 16:34:39 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/05 13:58:37 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,60 +14,56 @@
 
 int game_start(char **map, t_game *ptr)
 {
-	(void)ptr;
-	void	*mlx;
 
-	mlx = mlx_init();
-	create_map(map, mlx);
+	ptr->mlx = mlx_init();
+	create_map(map, ptr);
 	return (0);
 }
 
-int create_map(char **map, void *mlx)
+int create_map(char **map, t_game *ptr)
 {
 	int		i;
 	int		j;
-	void	*mlx_win;
+	int		width;
+	int		height;
 
 	i = 0;
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	height = ft_len_db_tab(map);
+	width = ft_strlen(map[i]);
+	(void)width;
+	(void)height;
+	ft_printf("wi %d\n", width);
+	ft_printf("wi %d\n", height);
+	ptr->win = mlx_new_window(ptr->mlx, ((width) * 16), ((height) * 16), "Hello world!");
+	if (ptr->win == NULL)
+		return (-1);
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
 		{
-			if (put_image(map, mlx_win, i, j, mlx) == -1)
+			if (put_image(map, ptr, &i, &j) == -1)
 				return (-1);
 			j++;
 		}
 		i++;
 	}
-	mlx_loop(mlx);
+	mlx_loop(ptr->mlx);
 	return (0);
 }
 
-int put_image(char **map, void *mlx_win, int i, int j, void *mlx)
+int put_image(char **map, t_game *ptr, int *i, int *j)
 {
-	void	*img;
-	char	*relative_path;
-	int		img_width;
-	int		img_height;
-
-	if (map[i][j] == '1')
-		relative_path = "tiles/Wall.xpm";
-	else if (map[i][j] == '0')
-		relative_path = "tiles/floor.xpm";
-	else if (map[i][j] == 'P')
-		relative_path = "tiles/player.xpm";
-	else if (map[i][j] == 'E')
-		relative_path = "tiles/exit.xpm";
-	else if (map[i][j] == 'C')
-		relative_path = "tiles/item.xpm";
-	if (mlx_win == NULL)
-		return (-1);
-	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-	if (img == NULL)
-		return (-1);
-	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
+	if (map[*i][*j] == '1')
+		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img_0, (*i) * 16, (*j) * 16);
+	else if (map[*i][*j] == '0')
+		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img_1, (*i) * 16, (*j) * 16);
+	else if (map[*i][*j] == 'P')
+		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img_2, (*i) * 16, (*j) * 16);
+	else if (map[*i][*j] == 'E')
+		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img_3, (*i) * 16, (*j) * 16);
+	else if (map[*i][*j] == 'C')
+		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img_4, (*i) * 16, (*j) * 16);
 	return (0);
 }
 

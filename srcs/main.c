@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/04 14:42:47 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/05 13:55:17 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ int	main(int argc, char *argv[], char *env[])
 		free_db_tab(map);
 		return (0);
 	}
+	/*if (verif_size_img(map, ptr) == -1)
+	{
+		verifier la size des images
+		free_db_tab(map);
+		ft_printf("wrong tile size\n");
+		return (0);
+	}*/
 	ptr = malloc(sizeof(t_game));
 	ptr = init_struct(ptr);
 	if (game_manager(map, ptr) == -1)
@@ -49,6 +56,11 @@ int	main(int argc, char *argv[], char *env[])
 
 t_game *init_struct(t_game *ptr)
 {
+	void	*mlx;
+	int		img_width;
+	int		img_height;
+
+	mlx = mlx_init();
 	ptr->i = 0;
 	ptr->cpt = 0;
 	ptr->x = 0;
@@ -57,11 +69,11 @@ t_game *init_struct(t_game *ptr)
 	ptr->nb_exit = 0;
 	ptr->p_x = 0;
 	ptr->p_y = 0;
-	ptr->upper = 0;
-	ptr->lower = 0;
-	ptr->left = 0;
-	ptr->right = 0;
-	ptr->end = 0;
+	ptr->img_0 = mlx_xpm_file_to_image(mlx, "tiles/Wall.xpm", &img_width, &img_height);
+	ptr->img_1 = mlx_xpm_file_to_image(mlx, "tiles/floor.xpm", &img_width, &img_height);
+	ptr->img_2 = mlx_xpm_file_to_image(mlx, "tiles/player.xpm", &img_width, &img_height);
+	ptr->img_3 = mlx_xpm_file_to_image(mlx, "tiles/exit.xpm", &img_width, &img_height);
+	ptr->img_4 = mlx_xpm_file_to_image(mlx, "tiles/item.xpm", &img_width, &img_height);
 	return (ptr);
 }
 

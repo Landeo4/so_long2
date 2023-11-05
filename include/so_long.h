@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/04 16:22:03 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/05 12:55:06 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,15 @@ typedef struct s_game
 	int		nb_exit;
 	int 	p_x;
 	int 	p_y;
-	int 	upper;
-	int 	lower;
-	int 	left;
-	int 	right;
-	int 	end;
 	void	*mlx;
 	void	*win;
+	char	*img_0;
+	char	*img_1;
+	char	*img_2;
+	char	*img_3;
+	char	*img_4;
+	int		width;
+	int		height;
 }		t_game;
 
 typedef struct	s_data {
@@ -76,8 +78,9 @@ int		backtracking_map_finish(char **tmp);
 char	**cpy_map_outline(char **tmp);
 int		game_start(char **map, t_game *ptr);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		create_map(char **map, void *mlx);
-int put_image(char **map, void *mlx_win, int i, int j, void *mlx);
+int		create_map(char **map, t_game *ptr);
+int		put_image(char **map, t_game *ptr, int *i, int *j);
+
 /*
 =====================================
 			PARSING
@@ -163,5 +166,6 @@ char				*ft_strjoin(char *s1, char *s2);
 char				*ft_strlcpy(char *dest, const char *src, int size);
 char				*copy_char(char *s1, char *s2, int i, int j);
 char				*ft_strdup(char *s);
+int					ft_len_db_tab(char **str);
 
 #endif
