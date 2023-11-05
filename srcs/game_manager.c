@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:18:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/03 16:16:32 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/05 14:54:56 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int game_manager(char **map, t_game *ptr)
 		return (-1);
 	tmp = cpy_map(map);
 	show_db_tab(tmp);
-	ft_printf("backtracking\n");
+	//ft_printf("backtracking\n");
 	x = ptr->p_x;
 	y = ptr->p_y;
 	if (game_backtracking(tmp, ptr, y, x) == -1)
@@ -60,7 +60,7 @@ int	get_len_map(char **map)
 		i++;
 		j = 0;
 	}
-	ft_printf("nb case map %i\n", len);
+	//ft_printf("nb case map %i\n", len);
 	return (len);
 }
 

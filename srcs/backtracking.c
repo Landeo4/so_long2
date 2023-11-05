@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:00:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/03 16:23:13 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/05 15:57:34 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ int game_backtracking(char **tmp, t_game *ptr, int y, int x)
 		game_backtracking(tmp, ptr, (y + 1), x);
 		game_backtracking(tmp, ptr, (y - 1), x);
 	}
-	show_db_tab(tmp);
+	//show_db_tab(tmp);
 	if (backtracking_map_finish(tmp) == 0)
 		return (-1);
 	if (ptr->nb_item != 0 || ptr->nb_exit != 0)
 	{
-		ft_printf("nb_item %d, nb_exit %d\n", ptr->nb_item, ptr->nb_exit);
+		//ft_printf("nb_item %d, nb_exit %d\n", ptr->nb_item, ptr->nb_exit);
 		return (-1);
 	}
 	return (0);
