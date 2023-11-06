@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/06 11:51:42 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:23:47 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int argc, char *argv[], char *env[])
 		free_db_tab(map);
 		return (-1);
 	}
+	ft_printf("ptr %d ptr %d\n", ptr->p_y, ptr->p_x);
 	game_start(map, ptr);
 	show_db_tab(map);
 	free_db_tab(map);

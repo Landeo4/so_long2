@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:07:13 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/06 12:21:53 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:24:05 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	get_keycode(int keycode, t_game *vars, char **map)
 
 int	get_keycode(int keycode, t_game *vars, char **map)
 {
-	ptr = player_pos(map, ptr);
 	vars->p_mov = 0;
 	if (keycode == 119)
 		vars->p_mov = 1;
@@ -80,7 +79,7 @@ int	get_keycode(int keycode, t_game *vars, char **map)
 
 int	try_moove(char **map, t_game *ptr)
 {
-	ptr = player_pos(map, ptr);
+	// ptr = player_pos(map, ptr);
 	ft_printf("y %d x %d\n", ptr->p_y, ptr->p_x);
 	ft_printf("HALLLOOOOO p_mov %d\n", ptr->p_mov);
 	if (ptr->p_mov == 1)
