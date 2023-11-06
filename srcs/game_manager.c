@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpotillion <tpotillion@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:18:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/06 12:20:38 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:15:12 by tpotillion       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ t_game *player_pos(char **map, t_game *ptr)
 	while (map[i])
 	{
 		j = 0;
-		ft_printf("i %d et j %d\n", i, j);
+		show_db_tab(map);
+		//ft_printf("avant le while i %d et j %d\n", i, j);
 		while (map[i][j])
 		{
 			if (map[i][j] == 'P')
@@ -107,11 +108,11 @@ t_game *player_pos(char **map, t_game *ptr)
 				ft_printf("y = %d x = %d\n", i, j);
 				return (ptr);
 			}
+			//ft_printf("dans le while i %d et j %d\n", i, j);
 			j++;
 		}
 		i++;
 	}
-	ptr->p_x = -1;
 	return (ptr);
 }
 

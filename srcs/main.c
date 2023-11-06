@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpotillion <tpotillion@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/06 12:23:47 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:26:09 by tpotillion       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int	main(int argc, char *argv[], char *env[])
 	t_game	*ptr;
 	(void)argc;
 
+	ptr = malloc(sizeof(t_game));
+	ptr = init_struct(ptr);
+	ptr->map = map_manager(argv, env);
 	map = map_manager(argv, env);
 	if (verif_map_manager(map) != 1)
 	{
@@ -31,15 +34,13 @@ int	main(int argc, char *argv[], char *env[])
 		ft_printf("wrong tile size\n");
 		return (0);
 	}*/
-	ptr = malloc(sizeof(t_game));
-	ptr = init_struct(ptr);
 	if (game_manager(map, ptr) == -1)
 	{
 		free_db_tab(map);
 		return (-1);
 	}
 	ft_printf("ptr %d ptr %d\n", ptr->p_y, ptr->p_x);
-	game_start(map, ptr);
+	game_start(ptr->map, ptr);
 	show_db_tab(map);
 	free_db_tab(map);
 	return (0);
@@ -63,6 +64,7 @@ t_game *init_struct(t_game *ptr)
 
 	mlx = mlx_init();
 	ptr->i = 0;
+	ptr->map = NULL;
 	ptr->cpt = 0;
 	ptr->x = 0;
 	ptr->y = 0;

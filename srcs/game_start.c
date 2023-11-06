@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_start.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpotillion <tpotillion@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 16:29:03 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/06 11:41:55 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:21:04 by tpotillion       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int game_start(char **map, t_game *ptr)
 		return (-1);
 	create_map(map, ptr);
 	// mlx_mouse_hook(ptr->win, close_windows_mouse, &ptr);
+	show_db_tab(map);
+	ft_printf("la map avant mlx hook\n");
 	mlx_hook(ptr->win, 2, 1L<<0, get_keycode, &ptr);
 	//player_movement(map, ptr);
 	mlx_loop(ptr->mlx);
