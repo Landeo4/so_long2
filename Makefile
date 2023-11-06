@@ -6,7 +6,7 @@
 #    By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 10:25:01 by tpotilli@st       #+#    #+#              #
-#    Updated: 2023/11/05 12:49:43 by tpotilli         ###   ########.fr        #
+#    Updated: 2023/11/06 11:09:15 by tpotilli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS =	srcs/main.c\
 		srcs/game_manager.c\
 		srcs/backtracking.c\
 		srcs/game_start.c\
+		srcs/hook_destroy_images.c\
 		utils/gnl_utils.c\
 		utils/gnl.c\
 		utils/ft_putchar.c\

@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/05 16:27:40 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:11:04 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,10 @@ typedef struct s_game
 	int		height;
 }		t_game;
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
 int		ft_strlen(char *s);
-int		main(int argc, char **argv, char **env);
+int		main(int argc, char *argv[], char *env[]);
 int		pr_error(char *error);
 int		game_manager(char **map, t_game *ptr);
-int		close_windows(int keycode, t_game *vars);
 t_game	*player_pos(char **map, t_game *ptr);
 int		nb_item(char **map);
 char	**cpy_map(char **map);
@@ -79,9 +70,10 @@ char	**cpy_map_outline(char **tmp);
 int		game_start(char **map, t_game *ptr);
 int		create_map(char **map, t_game *ptr);
 int		put_image(char **map, t_game *ptr, int *i, int *j);
-int		key_hook(int keycode, t_game *ptr);
 void	player_movement(char **map, t_game *ptr);
-int		mouse_hook(int keycode, t_game *vars);
+void	free_all(t_game *ptr);
+int		close_windows_esc(int keycode, t_game *vars, char **map);
+int		close_windows_mouse(int keycode, t_game *vars, char **map);
 
 /*
 =====================================

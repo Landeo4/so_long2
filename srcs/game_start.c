@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 16:29:03 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/05 17:55:28 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:11:43 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,49 +17,11 @@ int game_start(char **map, t_game *ptr)
 	ptr->mlx = mlx_init();
 	create_map(map, ptr);
 	//player_movement(map, ptr);
-	// mlx_mouse_hook(ptr->win, mouse_hook, &ptr);
-	mlx_hook(ptr->win, 2, 1L<<0, close_windows, &ptr);
+	mlx_mouse_hook(ptr->win, close_windows_mouse, &ptr);
+	mlx_hook(ptr->win, 2, 1L<<0, close_windows_esc, &ptr);
 	mlx_loop(ptr->mlx);
 	return (0);
 }
-
-int	close_windows(int keycode, t_game *vars)
-{
-	if (keycode == 65307)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
-	printf("Hello from key_hook!\n");
-	return (0);
-}
-
-int	mouse_hook(int keycode, t_game *vars)
-{
-	if (keycode == 1)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
-	printf("Hello from mouse_hook!\n");
-	return (0);
-}
-
-/*void player_movement(char **map, t_game *ptr)
-{
-	int		y;
-	int		x;
-
-	mlx_key_hook(ptr->win, key_hook, &ptr);
-	if ()
-}*/
-
-/*int	key_hook(int keycode, t_game *ptr)
-{
-	printf("Hello from key_hook!\n");
-	mlx_destroy_window(ptr->mlx, ptr->win);
-	return (0);
-}*/
 
 int create_map(char **map, t_game *ptr)
 {
@@ -103,3 +65,23 @@ int put_image(char **map, t_game *ptr, int *i, int *j)
 		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img_4, (*j) * 16, (*i) * 16);
 	return (0);
 }
+
+// void free_all(t_game *ptr)
+// {
+// 	free(ptr->mlx);
+// 	free(ptr->win);
+// 	free(ptr->img_0);
+// 	free(ptr->img_1);
+// 	free(ptr->img_2);
+// 	free(ptr->img_3);
+// 	free(ptr->img_4);
+// }
+
+/*void player_movement(char **map, t_game *ptr)
+{
+	int		y;
+	int		x;
+
+	mlx_key_hook(ptr->win, key_hook, &ptr);
+	if ()
+}*/
