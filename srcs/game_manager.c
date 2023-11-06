@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:18:32 by tpotilli          #+#    #+#             */
-/*   Updated: 2023/11/05 14:54:56 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:20:38 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,20 +94,21 @@ t_game *player_pos(char **map, t_game *ptr)
 	int		j;
 
 	i = 1;
-	j = 0;
 	while (map[i])
 	{
+		j = 0;
+		ft_printf("i %d et j %d\n", i, j);
 		while (map[i][j])
 		{
 			if (map[i][j] == 'P')
 			{
 				ptr->p_x = j;
 				ptr->p_y = i;
+				ft_printf("y = %d x = %d\n", i, j);
 				return (ptr);
 			}
 			j++;
 		}
-		j = 0;
 		i++;
 	}
 	ptr->p_x = -1;

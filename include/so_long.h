@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:03:33 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/06 11:11:04 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:51:49 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_game
 	int		nb_exit;
 	int 	p_x;
 	int 	p_y;
+	int		p_mov;
 	void	*mlx;
 	void	*win;
 	char	*img_0;
@@ -72,8 +73,10 @@ int		create_map(char **map, t_game *ptr);
 int		put_image(char **map, t_game *ptr, int *i, int *j);
 void	player_movement(char **map, t_game *ptr);
 void	free_all(t_game *ptr);
-int		close_windows_esc(int keycode, t_game *vars, char **map);
+void	close_windows_esc(t_game *vars, char **map);
 int		close_windows_mouse(int keycode, t_game *vars, char **map);
+int		get_keycode(int keycode, t_game *vars, char **map);
+int		try_moove(char **map, t_game *ptr);
 
 /*
 =====================================

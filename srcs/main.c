@@ -6,7 +6,7 @@
 /*   By: tpotilli <tpotilli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 10:43:31 by tpotilli@st       #+#    #+#             */
-/*   Updated: 2023/11/05 13:55:17 by tpotilli         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:51:42 by tpotilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_game *init_struct(t_game *ptr)
 	ptr->nb_exit = 0;
 	ptr->p_x = 0;
 	ptr->p_y = 0;
+	ptr->p_mov = 0;
 	ptr->img_0 = mlx_xpm_file_to_image(mlx, "tiles/Wall.xpm", &img_width, &img_height);
 	ptr->img_1 = mlx_xpm_file_to_image(mlx, "tiles/floor.xpm", &img_width, &img_height);
 	ptr->img_2 = mlx_xpm_file_to_image(mlx, "tiles/player.xpm", &img_width, &img_height);
